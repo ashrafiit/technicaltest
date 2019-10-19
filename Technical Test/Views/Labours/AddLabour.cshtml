@@ -2,69 +2,143 @@
 @model Labour
 <html>
 <head>
-<title></title>
+    <title></title>
     <style>
-        body{
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
-}
-.formBox{
-	margin-top: 90px;
-	padding: 50px;
-}
-.formBox  h1{
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	margin-bottom: 50px;
-	text-transform: uppercase;
-	font-size: 48px;
-}
-.inputBox{
-	position: relative;
-	box-sizing: border-box;
-	margin-bottom: 50px;
-}
-.inputBox .inputText{
-	position: absolute;
-    font-size: 24px;
-    line-height: 50px;
-    transition: .5s;
-    opacity: .5;
-}
-.inputBox .input{
-	position: relative;
-	width: 100%;
-	height: 50px;
-	background: transparent;
-	border: none;
-    outline: none;
-    font-size: 24px;
-    border-bottom: 1px solid rgba(0,0,0,.5);
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
 
-}
-.focus .inputText{
-	transform: translateY(-30px);
-	font-size: 18px;
-	opacity: 1;
-	color: #00bcd4;
+        .labelname {
+            color: blueviolet;
+        }
 
-}
-textarea{
-	height: 100px !important;
-}
-.button{
-height: 35px;
-    border: none;
-    outline: none;
-    background: blueviolet;
-    color: #fff;
-    width: 49%;
-}
+        .labourname {
+            width: 109%;         
+            height: 40px;
+            background-color: #e8d9f5;
+        }
+        .labeldepartment {
+            color: blueviolet;
+        }
+
+        .department {
+            width: 109%;
+            height: 40px;
+            background-color: #e8d9f5;
+        }
+
+        .description {
+            width: 109%;
+            max-height: -webkit-fill-available;
+            min-height: 40px;
+            background-color: #e8d9f5;
+        }
+        .descriptionlabel {
+            color: blueviolet;
+        }
+
+        .premiseslabel {
+            color: blueviolet;
+        }
+        .premisesdrop {
+            width: 109%;
+            height: 40px;
+            background-color: #e8d9f5;
+        }
+
+        .costlabel {
+            color: blueviolet;
+        }
+
+        .costname {
+            width: 109%;
+            height: 40px;
+            background-color: #e8d9f5;
+        }
+
+        .formBox {
+            margin-top: 90px;
+            padding: 50px;
+        }
+
+            .formBox h1 {
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                margin-bottom: 50px;
+                text-transform: uppercase;
+                font-size: 48px;
+            }
+
+        .input-euro {
+            position: relative;
+        }
+
+            .input-euro.left input {
+                padding-left: 18px;
+            }
+
+
+            .input-euro:before {
+                position: absolute;
+                top: 0;
+                content: "€";
+            }
+
+            .input-euro.left:before {
+                left: 5px;
+            }
+
+        .inputBox {
+            position: relative;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+        }
+
+            .inputBox .inputText {
+                position: absolute;
+                font-size: 24px;
+                line-height: 50px;
+                transition: .5s;
+                opacity: .5;
+            }
+
+            .inputBox .input {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                background: transparent;
+                border: none;
+                outline: none;
+                font-size: 24px;
+                border-bottom: 1px solid rgba(0,0,0,.5);
+            }
+
+        .focus .inputText {
+            transform: translateY(-30px);
+            font-size: 18px;
+            opacity: 1;
+            color: #00bcd4;
+        }
+
+        textarea {
+            height: 100px !important;
+        }
+
+        .button {
+            height: 35px;
+            border: none;
+            outline: none;
+            background: blueviolet;
+            color: #fff;
+            width: 49%;
+        }
     </style>
-    </head>
+</head>
 <body>
+
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -78,64 +152,70 @@ height: 35px;
                             <h4>Add Labour</h4>
                         </div>
                         <div class="col-sm-3 offset-sm-7">
-                           <input type="submit" value="Create Labour"  class="button"/>
+                            <input type="submit" value="Create Labour" class="button" />
                             <input type="reset" value="Cancel" class="button" />
+                            <hr style="background-color:blueviolet;">
                         </div>
+
+                    </div>
+                    <h5 style="color:blueviolet;"> Labour Information</h5>
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-3">
+                            <div class="inputBox ">
+                                @Html.LabelFor(model=>model.LabourName,new { @class = "labelname" })<br />
+                                @Html.TextBoxFor(model=>model.LabourName,new { @class="labourname",id=""})
+                                @Html.ValidationMessageFor(model=>model.LabourName)
+                              
+                            </div>
+                          
+                        </div>
+                     
+                        <div class="col-sm-3 col-sm-3">
+                            <div class="inputBox">
+
+                                @Html.LabelFor(model=>model.Department,new { @class = "labeldepartment" })<br />
+                                @Html.TextBoxFor(model=>model.Department,new { @class="department",id=""})
+                                @Html.ValidationMessageFor(model=>model.Department)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-sm-3">
+                            <div class="inputBox">
+                                @Html.LabelFor(model=>model.Description,new { @class="descriptionlabel"})<br />
+                                @Html.TextBoxFor(model => model.Description,new {@class="description",id=""})
+                                @Html.ValidationMessageFor(model=>model.Description)
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-sm-3">
+                            <div class="inputBox">
+                                @Html.LabelFor(model=>model.premises,new {@class="premiseslabel"})<br />
+                                @Html.DropDownListFor(model=>model.premises,new SelectList(Enum.GetNames(typeof(Premises))),"Select a premises(by default)",new {@class="premisesdrop" })
+                                @Html.ValidationMessageFor(model=>model.premises)
+                               
+                            </div>
+                           
+                        </div>
+
+                       
                       
                     </div>
-                    <h5> Labour Information</h5>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="inputBox ">
-                          
-                                <div class="inputText">Labour Name</div>
-                                <input type="text" name="LabourName" id="LabourName" class="input" required="">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="inputBox">
-                                <div class="inputText">Department</div>
-                                <input type="text" name="Department" id="Department" class="input" required="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="inputBox">
-                                <div class="inputText">Description</div>
-                                <input type="text" name="Description" id="Description" class="input" required="">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="inputBox">
-                                <div class="inputText">Premises</div>
-                              
-                                <select class="input" id="Premises" name="Premises" required="">
-                                    <option>Select Default Premises</option>
-                                    <option>London</option>
-                                    <option>New Delhi</option>
-                                    <option>Paris</option>
-                                </select>
-                             
-                            </div>
-                        </div>
-                    </div>
-                   
+                  
                     <div class="row">
                         <div class="col-sm-12">
-                           
                             <div class="inputBox">
-                                <div class="inputText">Cost
-                                  
-                                </div>
-                                <p>Average Salary (per hour)</p>
-                               
-                                <textarea class="input" name="Cost" id="Cost" placeholder="$"></textarea>
+                                @Html.LabelFor(model=>model.Cost,new { @class = "costlabel" })
+                                <p style="color:blueviolet;">Average Salary (per hour)</p>
+                                <span class="input-euro left">
+                                    @Html.TextBoxFor(model => model.Cost, new { @class = "costname", id = "Cost" })
+                                </span>
+                                <hr style="font-weight:bold;">
                             </div>
                         </div>
+
                     </div>
-                   
-                  
+
+
                 </form>
             </div>
         </div>

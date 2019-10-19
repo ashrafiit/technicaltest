@@ -1,0 +1,30 @@
+namespace Technical_Test.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class InitialCreate : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.Labours",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        LabourName = c.String(nullable: false),
+                        Department = c.String(nullable: false),
+                        Description = c.String(nullable: false),
+                        premises = c.Int(nullable: false),
+                        Cost = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropTable("dbo.Labours");
+        }
+    }
+}

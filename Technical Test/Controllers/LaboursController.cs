@@ -25,23 +25,23 @@ namespace Technical_Test.Controllers
         [HttpPost]
         public ActionResult AddLabour(Labour lab)
         {
-          
-                db.labour.Add(lab);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            
-        
-                         
+            if (!ModelState.IsValid)
+            {
+                return View(lab);
+            }
+            db.labour.Add(lab);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
-       
+
         public ActionResult Details(int? id)
         {
-            if(id==null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
             Labour lbr = db.labour.Find(id);
-            if(lbr==null)
+            if (lbr == null)
             {
                 return HttpNotFound();
             }
@@ -61,8 +61,6 @@ namespace Technical_Test.Controllers
             }
             return View(lbr);
         }
-
-       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -86,8 +84,6 @@ namespace Technical_Test.Controllers
             }
             return View(lbr);
         }
-
-       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Labour lab)

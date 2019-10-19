@@ -16,7 +16,7 @@ namespace Technical_Test
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Labour", action = "AddLabour", id = UrlParameter.Optional }
+                defaults: new { controller = "Labours", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

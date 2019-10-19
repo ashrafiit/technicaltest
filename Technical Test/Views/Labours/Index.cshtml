@@ -10,12 +10,22 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        .table-bordered{
+            width:100%;
+        }
+        p ,cl{
+           
+            color:blueviolet;
+            font-size:20px;
+        }
+    </style>
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create Labour", "AddLabour")
+        @Html.ActionLink("Add Labour", "AddLabour",new { @class = "cl" })
     </p>
-    <table class="table" border="1">
+    <table class="table table-bordered" border="1">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.LabourName)
@@ -36,7 +46,7 @@
         </tr>
     
     @foreach (var item in Model) {
-        <tr>
+        <tr class="align-items-center">
             <td>
                 @Html.DisplayFor(modelItem => item.LabourName)
             </td>
